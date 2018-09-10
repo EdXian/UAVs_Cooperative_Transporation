@@ -144,25 +144,14 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 #add_executable(measure src/measure.cpp ${HEADERS_} ${SOURCES_})
+
+IF(UKF_FOUND)
 add_executable(thetap src/thetap.cpp ${HEADERS_} ${SOURCES_})
 add_executable(trigger src/trigger.cpp ${HEADERS_} ${SOURCES_})
 add_executable(mocap src/mocap.cpp ${HEADERS_} ${SOURCES_})
 add_executable(check src/check.cpp ${HEADERS_} ${SOURCES_})
 add_executable(drone_mocap src/drone_mocap.cpp ${HEADERS_} ${SOURCES_})
-## Rename C++ executable without prefix
-## The above recommended prefix causes long target names, the following renames the
-## target back to the shorter version for ease of user use
-## e.g. "rosrun someones_pkg node" instead of "rosrun someones_pkg someones_pkg_node"
-# set_target_properties(${PROJECT_NAME}_node PROPERTIES OUTPUT_NAME node PREFIX "")
 
-## Add cmake target dependencies of the executable
-## same as for the library above
-# add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-
-# Specify libraries to link a library or executable target against
- #target_link_libraries(measure
- #  ${catkin_LIBRARIES}
- #)
  target_link_libraries(trigger
    ${catkin_LIBRARIES}
  )
@@ -178,6 +167,8 @@ target_link_libraries(check
 target_link_libraries(drone_mocap
   ${catkin_LIBRARIES}
 )
+ENDIF()
+
 #############
 ## Install ##
 #############
