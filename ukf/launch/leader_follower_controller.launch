@@ -1,0 +1,6 @@
+<launch>
+    <node pkg="UKF" name="leader_controller" type="leader" output="screen" >
+    </node>
+    <node pkg="UKF" name="follower_controller" type="follower" output="screen" >
+    </node>
+</launch>

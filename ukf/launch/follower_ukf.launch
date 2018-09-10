@@ -1,0 +1,15 @@
+<launch>
+<group ns = "follower_ukf">
+   <node pkg="UKF" name="ukf" type="ukf_estimate" output="screen" >
+     <param name="topic_imu" value="/drone2/mavros/imu/data" />
+     <param name="topic_mocap" value="/vrpn_client_node/RigidBody2/pose" />
+     <param name="topic_thrust" value="/drone2/mavros/vfr_hud" />
+     <param name="imu_bias_x" value="-0.096646" />
+     <param name="imu_bias_y" value="0.082456" />
+     <param name="imu_bias_z" value="-0.014286" />
+     <param name="g" value="9.80665" />
+     <param name="thrust" value="0.460" />
+     <param name="m" value="1.25" />
+   </node>
+</group>
+</launch>

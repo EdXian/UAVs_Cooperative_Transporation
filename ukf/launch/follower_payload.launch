@@ -1,0 +1,17 @@
+<launch>
+    <node pkg="UKF" name="ukf" type="ukf_estimate" output="screen" >
+        <param name="topic_imu" value="/drone1/mavros/imu/data" />
+        <param name="topic_mocap" value="/vrpn_client_node/RigidBody1/pose" />
+        <param name="topic_thrust" value="/drone1/mavros/vfr_hud" />
+        <param name="imu_bias_x" value="0" />
+        <param name="imu_bias_y" value="0" />
+        <param name="g" value="9.81" />
+        <param name="thrust" value="0.485" />
+    </node>
+
+    <node pkg="UKF" name="ukf_payload" type="payload" output="screen" >
+        <param name="topic_measure" value="/vrpn_client_node/RigidBody2/pose" />
+        <param name="topic_mocap" value="/vrpn_client_node/RigidBody1/pose" />
+
+    </node>
+</launch>
